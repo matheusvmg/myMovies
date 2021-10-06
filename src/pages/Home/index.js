@@ -18,6 +18,7 @@ import SliderItem from '../../components/SliderItem';
 import api, { key } from '../../services/api';
 import { getListMovies, randomBanner } from '../../utils/movie';
 import Loading from '../../components/Loading';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function Home() {
     const [nowMovies, setNowMovies] = useState([]);
@@ -28,6 +29,7 @@ function Home() {
     const [input, setInput] = useState('');
 
     const navigation = useNavigation();
+    const context = useThemeContext();
 
     useEffect(() => {
         let isActive = true;
@@ -89,7 +91,7 @@ function Home() {
     }
 
     return (
-        <Container>
+        <Container theme={context.applicationTheme}>
             <Header title="My Movies" />
 
             <SearchContainer>
@@ -98,13 +100,14 @@ function Home() {
                     placeholderTextColor="#DDD"
                     value={input}
                     onChangeText={(text) => setInput(text)}
+                    theme={context.applicationTheme}
                 />
                 <SearchButton onPress={handleSearchMovie}>
-                    <Feather name="search" size={36} color="#191A30" />
+                    <Feather name="search" size={36} color={context.applicationTheme === 'light' ? '#191A30' : '#FFFFFF'} />
                 </SearchButton>
             </SearchContainer>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <Title>Now playing</Title>
+                <Title theme={context.applicationTheme}>Now playing</Title>
 
                 <BannerButton activeOpacity={0.9} onPress={() => navigateDetailsPage(bannerMovie)}>
                     <Banner 
@@ -123,7 +126,7 @@ function Home() {
                     )}
                 />
 
-                <Title>Trending</Title>
+                <Title theme={context.applicationTheme}>Trending</Title>
                 <SliderMovie 
                     keyExtractor={(item) => String(item.id)}
                     horizontal={true}
@@ -134,7 +137,7 @@ function Home() {
                     )}
                 />
 
-                <Title>Top rated</Title>
+                <Title theme={context.applicationTheme}>Top rated</Title>
                 <SliderMovie 
                     keyExtractor={(item) => String(item.id)}
                     horizontal={true}

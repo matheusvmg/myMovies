@@ -12,29 +12,32 @@ import { Container,
     Description
 } from './styles';
 import { Ionicons, Feather } from '@expo/vector-icons';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function FavoriteItem({ data, deleteMovie, navigatePage }) {
+    const { applicationTheme } = useThemeContext();
+
     return (
         <Container>
-            <Title>{data?.title}</Title>
+            <Title theme={applicationTheme}>{data?.title}</Title>
             <ContentArea>
                 <Banner 
                     source={{
                         uri: `https://image.tmdb.org/t/p/original/${data?.poster_path}`
                     }}
                 />
-                <Description>{data?.overview}</Description>
+                <Description theme={applicationTheme}>{data?.overview}</Description>
             </ContentArea>
             <RateContainer>
                 <Ionicons name="md-star" color="#E7A74E" size={12} />
-                <Rate>{data?.vote_average}/10</Rate>
+                <Rate theme={applicationTheme}>{data?.vote_average}/10</Rate>
             </RateContainer>
             <ActionContainer>
-                <DetailButton onPress={() => navigatePage(data)}>
-                    <ButtonLabel>See Details</ButtonLabel>
+                <DetailButton theme={applicationTheme} onPress={() => navigatePage(data)}>
+                    <ButtonLabel theme={applicationTheme}>See Details</ButtonLabel>
                 </DetailButton>
                 <DeleteButton onPress={() => deleteMovie(data.id)}>
-                    <Feather name="trash" color="#384058" size={24} />
+                    <Feather name="trash" color={applicationTheme === 'light' ? '#384058' : '#EFEFEF'} size={24} />
                 </DeleteButton>
             </ActionContainer>
         </Container>

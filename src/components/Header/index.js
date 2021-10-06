@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, 
     MenuButton, 
     Title, 
@@ -9,23 +9,28 @@ import { Container,
 } from './styles';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function Header({ title }) {
+    const { changeTheme, applicationTheme } = useThemeContext();
     const navigation = useNavigation();
+
     return (
         <Container>
             <MenuButton
                 onPress={() => navigation.openDrawer()}
             >
-                <Feather name="menu" size={36} color="#191A30" />
+                <Feather name="menu" size={36} color={applicationTheme === 'light' ? '#191A30' : '#FFFFFF'} />
             </MenuButton>
            <HeaderContainer>
-                <Title>{title}</Title>
-                {/* <SwitchContainer>
-                    <SwitchThemeButton>
-                        <SwitchThemeButtonText>🌚</SwitchThemeButtonText>
+                <Title theme={applicationTheme}>{title}</Title>
+                <SwitchContainer>
+                    <SwitchThemeButton
+                        onPress={changeTheme}
+                    >
+                        <SwitchThemeButtonText>{applicationTheme === 'light' ? '🌚' : '🌞'}</SwitchThemeButtonText>
                     </SwitchThemeButton>
-                </SwitchContainer> */}
+                </SwitchContainer>
            </HeaderContainer>
         </Container>
     );

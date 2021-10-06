@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import themes from '../../styles/themes';
 
 export const Container = styled.View`
     height: 70px;
@@ -14,7 +15,7 @@ export const MenuButton = styled.TouchableOpacity`
 `;
 
 export const Title = styled.Text`
-    color: #191A30;
+    color: ${({ theme }) => theme === 'light' ? themes.light.primaryForegroundColor : themes.dark.primaryForegroundColor};
     font-size: 30px;
     font-weight: bold;
     margin-left: 18px;

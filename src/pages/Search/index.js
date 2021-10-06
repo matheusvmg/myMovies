@@ -4,6 +4,7 @@ import { useRoute, useNavigation } from '@react-navigation/native';
 import api, { key } from '../../services/api';
 import SearchItem from '../../components/SearchItem';
 import Loading from '../../components/Loading';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function Search() {
     const [movie, setMovie] = useState([]);
@@ -11,6 +12,7 @@ function Search() {
 
     const route = useRoute();
     const navigation = useNavigation();
+    const { applicationTheme } = useThemeContext();
 
     useEffect(() => {
         let isActive = true;
@@ -47,7 +49,7 @@ function Search() {
         return <Loading />;
     }
     return (
-        <Container>
+        <Container theme={applicationTheme}>
             <ListMovies 
                 data={movie}
                 showsVerticalScrollIndicator={false}

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Container, Banner, Title, RateContainer, Rate } from './styles';
 import { Ionicons } from '@expo/vector-icons';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function SearchItem({ data, navigatePage }) {
+    const { applicationTheme } = useThemeContext();
+
     function detailMovie() {
         if(data.release_date === '') {
             alert('movie without a release date');
@@ -25,14 +28,14 @@ function SearchItem({ data, navigatePage }) {
                     source={require('../../assets/images/semfoto.png')}
                 /> 
             ) }
-            <Title>{data?.title}</Title>
+            <Title theme={applicationTheme}>{data?.title}</Title>
             <RateContainer>
                 <Ionicons 
                     name="md-star"
                     size={12}
                     color="#E7A74E"
                 />
-                <Rate>{data?.vote_average}/10</Rate>
+                <Rate theme={applicationTheme}>{data?.vote_average}/10</Rate>
             </RateContainer>
         </Container>
     );

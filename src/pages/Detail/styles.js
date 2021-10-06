@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
+import themes from "../../styles/themes";
 
 export const Container = styled.View`
     flex: 1;
-    background-color: #EFEFEF;
+    background-color: ${({ theme }) => theme === 'light' ? themes.light.secondaryBackgroundColor : themes.dark.secondaryBackgroundColor};
 `;
 
 export const Header = styled.View`
@@ -33,7 +34,7 @@ export const Banner = styled.Image`
 `;
 
 export const ButtonLink = styled.TouchableOpacity`
-    background-color: #E72F49;
+    background-color: ${({ theme }) => theme === 'light' ? themes.light.red : themes.dark.red};
     width: 63px;
     height: 63px;
     border-radius: 35px;
@@ -46,7 +47,7 @@ export const ButtonLink = styled.TouchableOpacity`
 `;
 
 export const Title = styled.Text`
-    color: #191A30;
+    color: ${({ theme }) => theme === 'light' ? themes.light.primaryForegroundColor : themes.dark.primaryForegroundColor};
     font-size: 22px;
     font-weight: bold;
     padding: 8px 14px;
@@ -63,7 +64,7 @@ export const ContentArea = styled.View`
 export const Rate = styled.Text`
     font-size: 18px;
     font-weight: bold;
-    color: #384058;
+    color: ${({ theme }) => theme === 'light' ? themes.light.secondaryForegroundColor : themes.dark.secondaryForegroundColor};
 `;
 
 export const ListGenres = styled.FlatList`
@@ -77,7 +78,7 @@ export const Description = styled.Text`
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 30px;
-    color: #384058;
+    color: ${({ theme }) => theme === 'light' ? themes.light.secondaryForegroundColor : themes.dark.secondaryForegroundColor};
     line-height: 20px;
 `;
 

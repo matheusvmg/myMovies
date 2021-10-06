@@ -4,16 +4,18 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import StackRoutes from './stackRoutes';
 import Movies from '../pages/Movies';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useThemeContext } from '../contexts/ThemeContext';
 
 const Drawer = createDrawerNavigator();
 
 function Routes() {
+    const { applicationTheme } = useThemeContext();
     return (
         <Drawer.Navigator
             screenOptions={{
                 headerShown: false,
                 drawerStyle: {
-                    backgroundColor: '#191A30',
+                    backgroundColor: applicationTheme === 'light' ? '#191A30' : '#0F1016',
                     padding: 20,
                 },
                 drawerActiveBackgroundColor: '#E72F49',

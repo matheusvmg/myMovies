@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
+import themes from "../../styles/themes";
 
 export const Container = styled.SafeAreaView`
-    background-color: #EFEFEF;
+    background-color: ${({ theme }) => theme === 'light' ? themes.light.backgroundColor : themes.dark.backgroundColor};
     flex: 1;
     padding: 4px 0;
 `;
@@ -22,8 +23,8 @@ export const Input = styled.TextInput`
     border-radius: 50px;
     padding: 8px 15px;
     font-size: 16px;
-    color: #191A30;
-    border: 2px solid #191A30;
+    color: ${({ theme }) => theme === 'light' ? themes.light.primaryForegroundColor : themes.dark.primaryForegroundColor};
+    border: 2px solid ${({ theme }) => theme === 'light' ? themes.light.primaryForegroundColor : themes.dark.primaryForegroundColor};
 `;
 
 export const SearchButton = styled.TouchableOpacity`
@@ -38,7 +39,7 @@ export const Title = styled.Text`
     padding-bottom: 8px;
     font-size: 24px;
     font-weight: bold;
-    color: #191A30;
+    color: ${({ theme }) => theme === 'light' ? themes.light.primaryForegroundColor : themes.dark.primaryForegroundColor};
     padding-left: 14px;
     padding-right: 14px;
 `;

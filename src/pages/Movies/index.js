@@ -4,11 +4,14 @@ import Header from '../../components/Header';
 import { getMoviesSave, deleteMovie } from '../../utils/storage';
 import FavoriteItem from '../../components/FavoriteItem';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function Movies() {
     const [movies, setMovies] = useState([]);
     const navigation = useNavigation();
     const isFocused = useIsFocused();
+
+    const { applicationTheme } = useThemeContext();
 
     useEffect(() => {
         let isActive = true;
@@ -40,7 +43,7 @@ function Movies() {
     };
 
     return (
-        <Container>
+        <Container theme={applicationTheme}>
             <Header title="My Movies" />
             <ListMovies 
                 showsVerticalScrollIndicator={false}

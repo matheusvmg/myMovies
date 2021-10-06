@@ -21,6 +21,7 @@ import Genres from '../../components/Genres';
 import { ScrollView, Modal, Share } from 'react-native';
 import ModalLink from '../../components/ModalLink';
 import { saveMovie, hasMovie, deleteMovie } from '../../utils/storage';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
 function Detail() {
     const navigation = useNavigation();
@@ -29,6 +30,7 @@ function Detail() {
     const [movie, setMovie] = useState({});
     const [openLink, setOpenLink] = useState(false);
     const [favoritedMovie, setFavoritedMovie] = useState(false);
+    const { applicationTheme } = useThemeContext();
 
     useEffect(() => {
         let isActive = true;
@@ -84,7 +86,7 @@ function Detail() {
     };
 
     return (
-        <Container>
+        <Container theme={applicationTheme}>
             <Header>
                 <HeaderButton activeOpacity={0.7} onPress={() => navigation.goBack()} >
                     <Feather 
@@ -107,14 +109,14 @@ function Detail() {
                     uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}`
                 }}
             />
-            <ButtonLink onPress={() => setOpenLink(true)}>
+            <ButtonLink onPress={() => setOpenLink(true)} theme={applicationTheme}>
                 <Feather 
                     name="link"
                     color="#FFFFFF"
                     size={24}
                 />
             </ButtonLink>
-            <Title numberOfLines={1} >{movie.title}</Title>
+            <Title numberOfLines={1} theme={applicationTheme}>{movie.title}</Title>
             <ContentArea>
                 <Stars 
                     default={movie.vote_average}
@@ -126,7 +128,7 @@ function Detail() {
                     halfStar={ <Ionicons name="md-star-half" color="#E7A74E" size={24} /> }
                     disable={true}
                 />
-                <Rate>{movie.vote_average}/10</Rate>
+                <Rate theme={applicationTheme}>{movie.vote_average}/10</Rate>
             </ContentArea>
             <ListGenres 
                 data={movie?.genres}
@@ -138,16 +140,16 @@ function Detail() {
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <TitleContainer>
-                    <Title>Description</Title>
+                    <Title theme={applicationTheme}>Description</Title>
                     <ShareButton onPress={onShare}>
                         <Ionicons 
                             name="share-outline"
-                            color="#191A30"
+                            color={applicationTheme === 'light' ? '#191A30' : '#FFFFFF'}
                             size={28}
                         />
                     </ShareButton>
                 </TitleContainer>
-                <Description>
+                <Description theme={applicationTheme}>
                     {movie?.overview}
                 </Description>
             </ScrollView>
