@@ -153,13 +153,13 @@ function Detail() {
                     {movie?.overview}
                 </Description>
             </ScrollView>
-            <Modal animationType="slide" transparent={true} visible={openLink} >
+            {movie.homepage && <Modal animationType="slide" transparent={true} visible={openLink} >
                 <ModalLink 
                     link={movie?.homepage} 
                     close={() => setOpenLink(false)}
                     title={movie?.title}    
                 />
-            </Modal>
+            </Modal>}
         </Container>
     );
 };
