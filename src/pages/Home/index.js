@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, ActivityIndicator } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Container } from './styles';
 import Header from '../../components/Header';
 import { Feather } from '@expo/vector-icons';

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container, 
     MenuButton, 
     Title, 
@@ -10,6 +10,7 @@ import { Container,
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useThemeContext } from '../../contexts/ThemeContext';
+import { Switch } from 'react-native';
 
 function Header({ title }) {
     const { changeTheme, applicationTheme } = useThemeContext();
@@ -25,11 +26,12 @@ function Header({ title }) {
            <HeaderContainer>
                 <Title theme={applicationTheme}>{title}</Title>
                 <SwitchContainer>
-                    <SwitchThemeButton
-                        onPress={changeTheme}
-                    >
-                        <SwitchThemeButtonText>{applicationTheme === 'light' ? '🌚' : '🌞'}</SwitchThemeButtonText>
-                    </SwitchThemeButton>
+                    <Switch 
+                        value={applicationTheme === 'light' ? false : true}
+                        onValueChange={changeTheme}
+                        thumbColor={applicationTheme === 'light' ? '#FFFFFF' : '#191A30'}
+                        trackColor={{ true: '#FFFFFF' }}
+                    />
                 </SwitchContainer>
            </HeaderContainer>
         </Container>

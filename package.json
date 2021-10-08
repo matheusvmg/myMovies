@@ -1,6 +1,12 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "node_modules/expo/AppEntry.js",
+  "author": {
+    "email": "matheusvmg@gmail.com",
+    "name": "Matheus Vinícius",
+    "url": "https://github.com/matheusvmg/myMovies"
+  },
+  "description": "A Movie Catalog app that helps you search and manage your favorites movies",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
