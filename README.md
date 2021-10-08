@@ -4,8 +4,5 @@ A Movie Catalog app that helps you search and manage your favorites movies
 
 ## Light and Dark mode
 
-<div style="display: flex">
-  <img width="475" alt="Screen Shot 2021-10-06 at 10 40 29" src="https://user-images.githubusercontent.com/48018898/136214284-aee2bb5c-fd07-48d2-b402-e6a4ff0b3a78.png">
-
-<img width="475" alt="Screen Shot 2021-10-06 at 10 40 45" src="https://user-images.githubusercontent.com/48018898/136214421-5dd3f936-7f41-41f4-a59d-d90c16f98623.png">
-</div>
+  <img width="431" alt="Screen Shot 2021-10-08 at 00 22 56" src="https://user-images.githubusercontent.com/48018898/136493367-bd5be176-7053-4cd3-8033-dd038bdcf4a8.png">
+<img width="522" alt="Screen Shot 2021-10-08 at 00 23 05" src="https://user-images.githubusercontent.com/48018898/136493413-c43e4285-0d29-4f30-a948-aa7ad9254b8d.png">
