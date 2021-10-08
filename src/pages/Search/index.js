@@ -13,7 +13,7 @@ function Search() {
     const route = useRoute();
     const navigation = useNavigation();
     const { applicationTheme } = useThemeContext();
-    console.log(applicationTheme);
+
     useEffect(() => {
         let isActive = true;
 
